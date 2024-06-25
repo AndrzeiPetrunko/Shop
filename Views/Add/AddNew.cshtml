@@ -1,0 +1,74 @@
+﻿@model ProductViewModel
+@{
+}
+<form asp-action="AddProduct" method="post">
+    @if (TempData["AlertMessage"] != null)
+    {
+        <script>
+            alert('@TempData["AlertMessage"]');
+        </script>
+    }
+    <div class="form-group">
+        <label asp-for="ProductName">Name:</label>
+        <input asp-for="ProductName" type="text" class="form-control" />
+        
+        
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="ProductPrice">Price:</label>
+        <input asp-for="ProductPrice" type="number" class="form-control" min="0.01" step=".01">
+        <span asp-validation-for="ProductPrice" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateOfExpire">Date of expire:</label>
+        <input asp-for="DateOfExpire" type="text" id="datepicker" class="form-control" value="@DateTime.Now.ToString("yyyy/MM/dd")" />
+        <span asp-validation-for="DateOfExpire" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="ProductCount">Amount:</label>
+        <input asp-for="ProductCount" class="form-control" type="number" min="1" max="1000"/>
+        <span asp-validation-for="ProductCount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductCategoryId">Category:</label>
+        <select asp-for="ProductCategoryId" asp-items="ViewBag.ProductCategories" class="form-control">
+            @foreach (var item in ViewBag.List)
+            {
+                <option value=@item.ProductCategoryId>@item.CategoryName</option>
+            }
+        </select>
+        <span asp-validation-for="ProductCategoryId" class="text-danger"></span>
+    <div class="form-group">
+        <label class="control-label">Discount</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="Promotion" value="5" />
+            <label class="form-check-label">5%</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="Promotion" value="10" />
+            <label class="form-check-label">10%</label>
+        </div>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="Promotion" value="20" />
+            <label class="form-check-label">20%</label>
+        </div>
+        
+
+    <div>
+            <button type="submit" class="btn btn-outline-primary float-right">Save</button>
+    </div>
+    
+</form>
+@section Scripts
+{
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+}

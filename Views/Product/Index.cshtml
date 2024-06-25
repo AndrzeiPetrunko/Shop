@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProductList>
+@{
+    var sortedModel = Model.OrderBy(p => p.ProductCategoryId).ToList();
+}
+<h2>Product List</h2>
+@if (sortedModel.Any())
+{
+    <div>
+        <table class="table">
+            <thead class="tab-pane">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Date of expire</th>
+                    <th>Amount</th>
+                    <th>Promotion</th>
+                    <th>
+                        <a class="btn btn-outline-success float-right" asp-action="Add">New product</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tab-content">
+                @foreach (var item in sortedModel)
+                {
+                    <tr>
+                        <td>
+                            @item.ProductName
+                        </td>
+                        <td>
+                            @item.ProductPrice
+                        </td>
+                        <td>
+                            @item.CategoryName
+                        </td>
+                        <td>
+                            @item.DateOfExpire
+                        </td>
+                        <td>
+                            @item.ProductCount
+                        </td>
+                        <td>
+                            @item.Promotion %
+                        </td>
+                        <td>
+                            
+                                <p>@Html.ActionLink("Delete", "Delete", "Product", new { Id = @item.ProductId }, null)</p>
+                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>There's no products!</p>
+    <a class="btn btn-outline-success float-right" asp-action="Add">New product</a>
+}
