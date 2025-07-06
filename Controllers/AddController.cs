@@ -46,13 +46,13 @@ namespace Shop.Controllers
                 ProductCount = viewModel.ProductCount,
                 DateOfExpire = viewModel.DateOfExpire,
                 ProductPrice = viewModel.ProductPrice,
-                Promotion = viewModel.Promotion,
+                Discount = viewModel.Discount,
             };
             if (viewModel.ProductName == null  ) 
             {
                 TempData["AlertMessage"] = "Product name cannot be null or empty.";
                 return RedirectToAction("AddNew", "Add");
-            } else if(viewModel.Promotion == 0)
+            } else if(viewModel.Discount == 0)
             {
                 TempData["AlertMessage"] = "Choose the discount!";
                 return RedirectToAction("AddNew", "Add");

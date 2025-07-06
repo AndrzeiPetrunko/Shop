@@ -13,7 +13,7 @@ namespace Shop.Entities
         [ForeignKey("ProductCategory")]
         public int ProductCategoryId { get; set; }
         [Required(ErrorMessage = "Product name is required.")]
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
         [Required]
         public float ProductPrice { get; set; }
         [Required]
@@ -21,7 +21,7 @@ namespace Shop.Entities
         [Required]
         public int ProductCount { get; set; }
         [Required]
-        public float Promotion { get; set; }
+        public float Discount { get; set; }
 
     }
 }

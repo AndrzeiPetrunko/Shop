@@ -6,7 +6,7 @@ namespace Shop.Models
     {
 
         public int ProductCategoryId { get; set; }
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
         public float ProductPrice { get; set; }
         public DateTime DateOfExpire { get; set; }
         public int ProductCount { get; set; }

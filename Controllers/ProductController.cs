@@ -26,7 +26,7 @@ namespace Shop.Controllers
                 ProductCategoryId = p.ProductCategoryId,
                 CategoryName = _productsRepository.GetCategoryById(p.ProductCategoryId),
                 ProductCount = p.ProductCount,
-                Promotion = p.Promotion,
+                Discount = p.Discount,
                 ProductId = p.ProductId,
             }).ToList();
             return View(viewModel);

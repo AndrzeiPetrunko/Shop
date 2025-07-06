@@ -9,7 +9,7 @@ namespace Shop.Entities
         [Key]
         public int ProductCategoryId { get; set; }
         [Required]
-        public string CategoryName {  get; set; }
+        public string? CategoryName {  get; set; }
 
     }
 }
